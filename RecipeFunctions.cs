@@ -8,7 +8,8 @@ namespace MCT.Functions
             ILogger log)
         {
 
-            try {
+            try
+            {
                 var connectionString = Environment.GetEnvironmentVariable("CosmosDb");
 
                 CosmosClientOptions options = new CosmosClientOptions()
@@ -32,21 +33,24 @@ namespace MCT.Functions
 
                 return new OkObjectResult(results);
 
-            } catch (System.Exception ex)
+            }
+            catch (System.Exception ex)
             {
                 log.LogError(ex.Message);
                 return new BadRequestObjectResult(ex.Message);
             }
-            
+
         }
-    
+
         [FunctionName("GetRecipeById")]
         public static async Task<IActionResult> GetRecipeById(
             [HttpTrigger(AuthorizationLevel.Anonymous, "get", Route = "eindproject/recipes/{recipeId}")] HttpRequest req,
             string recipeId,
-            ILogger log) {
+            ILogger log)
+        {
 
-            try {
+            try
+            {
                 var connectionString = Environment.GetEnvironmentVariable("CosmosDb");
 
                 CosmosClientOptions options = new CosmosClientOptions()
@@ -56,10 +60,10 @@ namespace MCT.Functions
 
                 CosmosClient client = new CosmosClient(connectionString, options);
                 var container = client.GetContainer(General.COSMOS_DB, General.COSMOS_CONTAINER_RECIPE);
-                
 
-                string sql = "SELECT * FROM c WHERE c.id = '"+ recipeId + "'";
-                
+
+                string sql = "SELECT * FROM c WHERE c.id = '" + recipeId + "'";
+
                 var iterator = container.GetItemQueryIterator<Recipes>(sql);
                 var results = new List<Recipes>();
 
@@ -71,13 +75,14 @@ namespace MCT.Functions
 
                 return new OkObjectResult(results);
 
-            } catch (System.Exception ex)
+            }
+            catch (System.Exception ex)
             {
                 log.LogError(ex.Message);
                 return new BadRequestObjectResult(ex.Message);
             }
 
-            }
-    
+        }
+
     }
 }
