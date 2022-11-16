@@ -40,44 +40,44 @@ namespace MCT.Functions
             
         }
     
-        // [FunctionName("GetRecipeById")]
-        // public static async Task<IActionResult> GetRecipeById(
-        //     [HttpTrigger(AuthorizationLevel.Anonymous, "get", Route = "eindproject/recipes/{id}")] HttpRequest req,
-        //     string id,
-        //     ILogger log) {
+        [FunctionName("GetRecipeById")]
+        public static async Task<IActionResult> GetRecipeById(
+            [HttpTrigger(AuthorizationLevel.Anonymous, "get", Route = "eindproject/recipes/{recipeId}")] HttpRequest req,
+            string recipeId,
+            ILogger log) {
 
-        //     try {
-        //         var connectionString = Environment.GetEnvironmentVariable("CosmosDb");
+            try {
+                var connectionString = Environment.GetEnvironmentVariable("CosmosDb");
 
-        //         CosmosClientOptions options = new CosmosClientOptions()
-        //         {
-        //             ConnectionMode = ConnectionMode.Gateway
-        //         };
+                CosmosClientOptions options = new CosmosClientOptions()
+                {
+                    ConnectionMode = ConnectionMode.Gateway
+                };
 
-        //         CosmosClient client = new CosmosClient(connectionString, options);
-        //         var container = client.GetContainer(General.COSMOS_DB, General.COSMOS_CONTAINER_RECIPE);
-
-        //         string sql = "SELECT * FROM c WHERE c.id = @id";
+                CosmosClient client = new CosmosClient(connectionString, options);
+                var container = client.GetContainer(General.COSMOS_DB, General.COSMOS_CONTAINER_RECIPE);
                 
 
-        //         var iterator = container.GetItemQueryIterator<Recipes>(sql);
-        //         var results = new List<Recipes>();
+                string sql = "SELECT * FROM c WHERE c.id = '"+ recipeId + "'";
+                
+                var iterator = container.GetItemQueryIterator<Recipes>(sql);
+                var results = new List<Recipes>();
 
-        //         while (iterator.HasMoreResults)
-        //         {
-        //             var response = await iterator.ReadNextAsync();
-        //             results.AddRange(response.ToList());
-        //         }
+                while (iterator.HasMoreResults)
+                {
+                    var response = await iterator.ReadNextAsync();
+                    results.AddRange(response.ToList());
+                }
 
-        //         return new OkObjectResult(results);
+                return new OkObjectResult(results);
 
-        //     } catch (System.Exception ex)
-        //     {
-        //         log.LogError(ex.Message);
-        //         return new BadRequestObjectResult(ex.Message);
-        //     }
+            } catch (System.Exception ex)
+            {
+                log.LogError(ex.Message);
+                return new BadRequestObjectResult(ex.Message);
+            }
 
-        //     }
+            }
     
     }
 }
