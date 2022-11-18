@@ -1,5 +1,5 @@
-GET http://localhost:7071/api/eindproject/recipes HTTP/1.1
+GET https://recipesfa.azurewebsites.net/api/eindproject/recipes HTTP/1.1
 
 ###
-GET http://localhost:7071/api/eindproject/recipes/cfd5e1af-50d2-463c-a117-304049ec9ffb HTTP/1.1
+GET https://recipesfa.azurewebsites.net/api/eindproject/recipes/cfd5e1af-50d2-463c-a117-304049ec9ffb HTTP/1.1
 
