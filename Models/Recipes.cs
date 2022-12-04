@@ -10,7 +10,7 @@ public class Recipes
 
     [JsonProperty(PropertyName = "image")]
     public string Image { get; set; }
-    
+
     [JsonProperty(PropertyName = "healthScore")]
     public int HealthScore { get; set; }
 
@@ -31,7 +31,7 @@ public class Nutrients
     [JsonProperty(PropertyName = "amount")]
     public int Amount { get; set; }
 
-    [JsonProperty(PropertyName = "identent")]
+    [JsonProperty(PropertyName = "unit")]
     public string unit { get; set; }
 
     [JsonProperty(PropertyName = "percentOfDailyNeeds")]
