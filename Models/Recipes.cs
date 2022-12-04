@@ -29,10 +29,10 @@ public class Nutrients
     public string Title { get; set; }
 
     [JsonProperty(PropertyName = "amount")]
-    public string Amount { get; set; }
+    public int Amount { get; set; }
 
     [JsonProperty(PropertyName = "identent")]
-    public string Indented { get; set; }
+    public string unit { get; set; }
 
     [JsonProperty(PropertyName = "percentOfDailyNeeds")]
     public float percentOfDailyNeeds { get; set; }
