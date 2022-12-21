@@ -43,7 +43,7 @@ namespace MCT.Functions
         }
 
         [FunctionName("GetRecipeById")]
-        public static async Task<IActionResult> GetRecipeById(
+        public async Task<IActionResult> GetRecipeById(
             [HttpTrigger(AuthorizationLevel.Anonymous, "get", Route = "eindproject/recipes/{recipeId}")] HttpRequest req,
             string recipeId,
             ILogger log)

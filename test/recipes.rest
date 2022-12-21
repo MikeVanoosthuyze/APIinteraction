@@ -1,5 +1,5 @@
-GET https://recipesfa.azurewebsites.net/api/eindproject/recipes HTTP/1.1
+GET https://fa2-food.azurewebsites.net/api/eindproject/recipes HTTP/1.1
 
 ###
-GET https://recipesfa.azurewebsites.net/api/eindproject/recipes/65713fd6-4a99-48e4-9027-650e0101ac79 HTTP/1.1
+GET https://fa2-food.azurewebsites.net/api/eindproject/recipes/65713fd6-4a99-48e4-9027-650e0101ac79 HTTP/1.1
 
